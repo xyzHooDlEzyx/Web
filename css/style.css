@@ -1,0 +1,54 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  margin: 0 auto;
+  width: 1200px;
+}
+
+body {
+  background: #fef8f5;
+  font-family: "Rubik", system-ui;
+  background-image: url("/img/Background\ Scene.svg");
+  margin: 0;
+  background-repeat: no-repeat;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  color: #ffffff;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+}
+
+.logo-conainer {
+  display: flex;
+  font-family: "DM Serif Display", serif;
+}
+
+.nav-ul {
+  display: flex;
+  list-style: none;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+.button {
+  stroke: none;
+}
