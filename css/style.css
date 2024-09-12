@@ -84,6 +84,7 @@ body {
 
 .button {
 	stroke: none;
+	cursor: pointer;
 }
 
 .main-nav {
