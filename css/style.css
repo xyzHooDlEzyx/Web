@@ -57,8 +57,12 @@ body {
 	display: flex;
 	gap: 97px;
 	align-items: center;
-	text-decoration: none;
 	color: #ffffff;
+	text-decoration: none;
+}
+
+.list li {
+	list-style-type: none;
 }
 
 .nav-link:hover {
@@ -134,27 +138,6 @@ body {
 	line-height: 100%; /* 100px */
 }
 
-.margin--very-small {
-	margin-bottom: 40px;
-}
-
-.margin--small {
-	margin-bottom: 60px;
-}
-
-.margin--biggest {
-	margin-bottom: 150px;
-}
-
-.margin--very-biggest {
-	margin-bottom: 200px;
-}
-
-.car-image {
-	width: 80%;
-	transform: translate(-40%);
-}
-
 .header-2 {
 	color: #ee4d47;
 	font-size: 24px;
@@ -163,6 +146,41 @@ body {
 	line-height: 40px; /* 166.667% */
 	letter-spacing: 2.4px;
 	text-transform: uppercase;
+}
+
+.header-3 {
+	color: #402b2b;
+	font-family: "DM Serif Display";
+	font-size: 48px;
+	font-style: normal;
+	text-align: center;
+	font-weight: 400;
+	line-height: 140%; /* 67.2px */
+}
+
+.margin--very-small {
+	margin-bottom: 40px;
+}
+
+.margin--small {
+	margin-bottom: 60px;
+}
+
+.margin--big {
+	margin-bottom: 150px;
+}
+
+.margin-bottom-biggest {
+	margin-bottom: 200px;
+}
+
+.margin-top-biggest {
+	margin-top: 200px;
+}
+
+.car-image {
+	width: 80%;
+	transform: translate(-40%);
 }
 
 .features {
@@ -197,4 +215,79 @@ body {
 	font-style: normal;
 	font-weight: 500;
 	line-height: 36px; /* 150% */
+}
+
+.about {
+	justify-content: center;
+}
+
+.about-header {
+	text-align: center;
+}
+
+.clients {
+	display: flex;
+	justify-content: space-between;
+	gap: 20px;
+}
+
+.client {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	border-radius: 10px;
+	height: 360px;
+	background: #fff;
+	flex-basis: 100%;
+	box-shadow: 0px 20px 40px 0px rgba(238, 77, 71, 0.1);
+	padding: 50px;
+}
+
+.comment {
+	color: var(--text, #402b2b);
+	font-family: Rubik;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 300;
+	line-height: 30px; /* 187.5% */
+}
+
+.participate {
+	display: flex;
+	gap: 20px;
+
+	align-items: center;
+}
+
+.footer-section {
+	background: #f16353;
+}
+
+.footer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 90px 0;
+}
+
+.social-container {
+	display: flex;
+	gap: 20px;
+}
+
+.social-logo {
+	height: 36px;
+	width: 36px;
+}
+
+.footer-link {
+	text-decoration: none;
+}
+
+.copy {
+	color: var(--Gray2, #f8f9fa);
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: 30px; /* 187.5% */
 }
