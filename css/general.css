@@ -1,0 +1,81 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  margin: 0 auto;
+  width: 75rem;
+}
+
+body {
+  background: #fef8f5;
+  font-family: "Rubik", system-ui;
+
+  overflow-x: hidden;
+}
+
+.header {
+  height: 89.25px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list {
+  display: flex;
+  gap: 6.0625rem;
+  align-items: center;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.button {
+  stroke: none;
+  cursor: pointer;
+  padding: 1.3125rem 1.5625rem;
+  border-radius: 5px;
+  border: none;
+}
+
+label {
+  display: none;
+}
+
+#burger-toggle {
+  display: none;
+}
+
+.burger-menu {
+  display: none;
+}
+
+.background-container {
+  margin: 0 auto;
+  width: 84.625rem;
+}
+
+.background-image {
+  position: absolute;
+  z-index: -1;
+
+  height: auto;
+  width: 84.625rem;
+}
+
+.hero-section {
+  min-height: 40rem;
+}
+
+.car-image {
+  width: 80%;
+}
+
+.about {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}

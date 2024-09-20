@@ -1,0 +1,468 @@
+@media screen and (max-width: 84.625em) {
+  .background-container {
+    width: 100%;
+  }
+
+  .background-image {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 75em) {
+  html {
+    font-size: 80%;
+  }
+
+  .container {
+    width: 88%;
+  }
+}
+
+@media screen and (max-width: 68.875em) {
+  .hero-section {
+    min-height: 35rem;
+  }
+
+  html {
+    font-size: 75%;
+  }
+}
+
+@media screen and (max-width: 61.875em) {
+  .hero-section {
+    min-height: 33rem;
+  }
+}
+
+@media screen and (max-width: 60em) {
+  .features :nth-child(2) {
+    flex-direction: column-reverse;
+  }
+
+  .margin-bottom-biggest {
+    margin-bottom: 6.25rem;
+  }
+
+  .feature-bar {
+    align-items: center;
+    flex-direction: column;
+  }
+  .left-part {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 57.5em) {
+  .comment {
+    font-size: 0.9rem;
+  }
+  .photo {
+    width: 30%;
+  }
+  .client {
+    height: 21rem;
+  }
+}
+
+@media screen and (max-width: 52.5em) {
+  .hero-section {
+    min-height: 30rem;
+  }
+
+  .comment {
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 50em) {
+  .main-nav {
+    display: none;
+  }
+
+  label {
+    position: relative;
+    display: block;
+    height: 25px;
+    width: 30px;
+    cursor: pointer;
+  }
+
+  label::before,
+  label::after,
+  label span {
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  label::before {
+    content: "";
+    top: 0;
+  }
+
+  label::after {
+    content: "";
+    bottom: 0;
+  }
+
+  label span {
+    top: 11px;
+  }
+
+  #burger-toggle:checked + label::before {
+    transform: rotate(45deg);
+    top: 11px;
+  }
+
+  #burger-toggle:checked + label::after {
+    transform: rotate(-45deg);
+    bottom: 11px;
+  }
+
+  #burger-toggle:checked + label span {
+    opacity: 0;
+  }
+
+  .burger-menu {
+    position: absolute;
+    top: 80px;
+    right: 10px;
+    width: 200px;
+    background-color: #fff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    pointer-events: none;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+
+  #burger-toggle:checked ~ .burger-menu {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+  }
+
+  .burger-menu ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .burger-ul :nth-child(5) {
+    display: none;
+  }
+
+  .burger-menu li {
+    margin: 10px 0;
+  }
+
+  .burger-menu a {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    color: #402b2b;
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  .burger-menu .button--orange {
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #ee4d47;
+    border-radius: 5px;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .burger-menu a {
+    transition: color 0.3s ease;
+  }
+
+  .burger-menu .button--orange {
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .button--orange:hover {
+    background-color: #f8f8f8;
+    box-shadow: inset 0 0 0 2px #ee4d47;
+  }
+
+  .Illustration-1 {
+    align-self: center;
+  }
+
+  .Illustration-2 {
+    align-self: center;
+  }
+
+  .clients {
+    display: flex;
+    flex-direction: column;
+  }
+  .client {
+    display: flex;
+    flex-direction: row;
+  }
+  .comment {
+    font-size: 1rem;
+    width: 80%;
+    text-align: left;
+  }
+  .photo {
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 48.75em) {
+  .hero-section {
+    min-height: 27rem;
+  }
+  html {
+    font-size: 70%;
+  }
+
+  .text {
+    font-size: 1.3rem;
+  }
+
+  .header-2 {
+    font-size: 2rem;
+  }
+
+  .name {
+    font-size: 1.3rem;
+  }
+
+  .comment {
+    font-size: 1.3rem;
+  }
+}
+
+@media screen and (max-width: 45.3125em) {
+  .hero-section {
+    min-height: 27rem;
+  }
+
+  html {
+    font-size: 65%;
+  }
+
+  .text {
+    font-size: 1.4rem;
+  }
+
+  .header-2 {
+    font-size: 2.1rem;
+  }
+
+  .name {
+    font-size: 1.4rem;
+  }
+
+  .comment {
+    font-size: 1.4rem;
+  }
+}
+@media screen and (max-width: 42.9375em) {
+  .hero-section {
+    min-height: 26.5rem;
+  }
+
+  html {
+    font-size: 60%;
+  }
+}
+@media screen and (max-width: 42em) {
+  .hero-section {
+    min-height: 26rem;
+  }
+
+  .Illustration-1 {
+    width: 80%;
+  }
+
+  .Illustration-2 {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 38.8125em) {
+  html {
+    font-size: 55%;
+  }
+}
+
+@media screen and (max-width: 36.5em) {
+  html {
+    font-size: 50%;
+  }
+
+  .text {
+    font-size: 1.5rem;
+  }
+
+  .comment {
+    font-size: 1.5rem;
+  }
+
+  .name {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 33.25em) {
+  html {
+    font-size: 45%;
+  }
+
+  .burger-menu a {
+    font-size: 1.5rem;
+  }
+
+  .text {
+    font-size: 1.7rem;
+  }
+
+  .comment {
+    font-size: 1.7rem;
+  }
+
+  .name {
+    font-size: 1.7rem;
+  }
+
+  .ask-text {
+    font-size: 1.7rem;
+  }
+
+  .header-2 {
+    font-size: 2.3rem;
+  }
+
+  .logo-img {
+    width: 20%;
+  }
+}
+
+@media screen and (max-width: 30em) {
+  .hero-section .button--orange {
+    display: none;
+  }
+
+  .burger-ul :nth-child(5) {
+    display: block;
+  }
+
+  .header-1 {
+    font-size: 6rem;
+  }
+}
+
+@media screen and (max-width: 28.875em) {
+  html {
+    font-size: 40%;
+  }
+
+  .burger-menu a {
+    font-size: 1.75rem;
+  }
+
+  .text {
+    font-size: 1.8rem;
+  }
+
+  .comment {
+    font-size: 1.8rem;
+  }
+
+  .name {
+    font-size: 1.8rem;
+  }
+
+  .ask-text {
+    font-size: 1.8rem;
+  }
+
+  .header-1 {
+    font-size: 6.25rem;
+  }
+
+  .header-2 {
+    font-size: 2.4rem;
+  }
+}
+
+@media screen and (max-width: 26.8125em) {
+  .header-1 {
+    font-size: 6rem;
+    margin-bottom: 2.8rem;
+  }
+
+  .hero-section {
+    height: 23rem;
+  }
+}
+
+@media screen and (max-width: 26.25em) {
+  .car-image {
+    display: none;
+  }
+  .hero-section {
+    margin-bottom: 8rem;
+  }
+}
+
+@media screen and (max-width: 25.75em) {
+  .header-1 {
+    font-size: 5.75rem;
+  }
+}
+
+@media screen and (max-width: 24.6875em) {
+  .header-1 {
+    font-size: 5.5rem;
+  }
+}
+
+@media screen and (max-width: 23.6875em) {
+  .header-1 {
+    font-size: 5.25rem;
+  }
+
+  .hero-section {
+    margin-bottom: 6rem;
+  }
+}
+
+@media screen and (max-width: 22.625em) {
+  .header-1 {
+    font-size: 5rem;
+  }
+
+  .hero-section {
+    margin-bottom: 5.5rem;
+  }
+}
+
+@media screen and (max-width: 21.625em) {
+  html {
+    font-size: 35%;
+  }
+
+  .header-1 {
+    font-size: 5rem;
+  }
+
+  .hero-section {
+    margin-bottom: 5.5rem;
+  }
+}

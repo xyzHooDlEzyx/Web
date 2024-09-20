@@ -4,30 +4,31 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>TRAFICO</title>
-		<link
-			href="https://fonts.googleapis.com/css2?family=Rubik:wght@300..900&display=swap"
-			rel="stylesheet" />
-		<link
-			href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap"
-			rel="stylesheet" />
+
+		<link rel="icon" href="/img/logo.svg" type="image/x-icon">
+
+		<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300..900&display=swap" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+		
+		<link rel="stylesheet" href="/css/general.css" />
 		<link rel="stylesheet" href="/css/style.css" />
+		<link rel="stylesheet" href="/css/queries.css" />
+		
+
 	</head>
 	<body>
 		<div class="background-container">
-			<img
-				class="background-image"
-				src="img/background-image.svg"
-				alt=""
-				height="951px"
-				width="1685px" />
+			<img class="background-image" src="img/background-image.svg" alt="background-image" />
 		</div>
 		<header class="header-section">
 			<div class="header container">
+				<a class="logo-container" href="#">
+					<img class="logo-img" src="img/logo.svg" alt="logo" />
+					<p class="logo-text">traffico.</p>
+				</a>
 				<nav class="main-nav">
-					<a class="logo-conainer" href="#">
-						<img src="img/logo.svg" alt="logo" />
-						<p class="logo-text">traffico.</p>
-					</a>
+					
 					<ul class="list">
 						<li>
 							<a class="nav-link" href="#">about</a>
@@ -39,28 +40,41 @@
 							<a class="nav-link" href="#">faqs</a>
 						</li>
 						<lis>
-							<a class="nav-link button button--orange" href="#">contact us</a>
+							<a class="nav-link button button--orange" href="#"><span class="link-span">contact us</span></a>
 						</lis>
 					</ul>
 				</nav>
+				<input id="burger-toggle" type="checkbox">
+        		<label for="burger-toggle">
+            		<span></span>
+        		</label>
+        		<div class="burger-menu">
+            		<ul class="burger-ul">
+                		<li><a href="#" class="nav-links nav-link">about</a></li>
+                		<li><a href="#" class="nav-links nav-link">how to</a></li>
+                		<li><a href="#" class="nav-links nav-link">faqs</a></li>
+                		<li><a href="#" class="nav-links nav-link button button--orange"><span class="link-span">contact us</span></a></li>
+						<li><a href="#" class="nav-links nav-link button button--orange"><span class="link-span">get started &RightArrow;</span></a></li>
+            		</ul>
+        		</div>
 			</div>
 		</header>
 		<section class="hero-section">
 			<div class="container hero-container">
 				<div class="hero-text">
-					<h1 class="header-1 margin--small">
+					<h1 class="header-1">
 						Your awesome traffic permit consultant.
 					</h1>
-					<button class="button button--orange margin--big">
-						get started &RightArrow;
-					</button>
+					<a class="nav-link button button--orange margin--big" href="#">
+						<span class="link-span">get started &RightArrow;</span> 
+					</a>
 				</div>
-				<img
-					class="car-image margin-bottom-biggest"
-					src="img/Car image.svg"
-					alt="" />
 			</div>
 		</section>
+		<div class="container">
+			<img class="car-image animate-on-scroll margin-bottom-biggest" src="img/Car image.svg" alt="truck" />
+		</div>
+		<script src="main.js"></script>
 		<section class="features-section">
 			<div class="features container">
 				<div class="feature-bar">
@@ -79,13 +93,13 @@
 						</div>
 					</div>
 					<div class="illustration-right-part">
-						<img src="img/Illustration.svg" alt="" />
+						<img class="Illustration-1" src="img/Illustration.svg" alt="Illustration" />
 					</div>
 				</div>
 
 				<div class="feature-bar margin-bottom-biggest">
 					<div class="illustration-right-part">
-						<img src="img/Illustrations.svg" alt="" />
+						<img class="Illustration-2" src="img/Illustrations.svg" alt="Illustration" />
 					</div>
 					<div class="left-part">
 						<h2 class="header-2 margin--very-small">how to apply</h2>
@@ -102,7 +116,7 @@
 			</div>
 			<div class="about container margin-bottom-biggest">
 				<h2 class="header-2 about-header">ABOUT US</h2>
-				<h1 class="header-3 margin--very-small">Out Awesome Clients</h1>
+				<h1 class="header-3 margin--very-small">Our Awesome Clients</h1>
 				<div class="clients">
 					<div class="client">
 						<p class="comment">
@@ -110,9 +124,9 @@
 							application as the Permittee, and you sign the permit as the
 							Applicant or Agent for the Permittee.
 						</p>
-						<div class="participate">
+						<div class="participant">
 							<img class="photo" src="/img/photo1.png" alt="John Doe" />
-							<p>John Doe</p>
+							<p class="name">John Doe</p>
 						</div>
 					</div>
 					<div class="client">
@@ -121,9 +135,9 @@
 							phone book. They employ certified Traffic Control Supervisors
 							(TCS) who can generate and certify the traffic control plan.
 						</p>
-						<div class="participate">
+						<div class="participant">
 							<img class="photo" src="/img/photo2.png" alt="John Doe" />
-							<p>John Doe</p>
+							<p class="name">John Doe</p>
 						</div>
 					</div>
 					<div class="client">
@@ -131,9 +145,9 @@
 							An A-Line, or access restriction deed is a property right that has
 							been obtained by CDOT for the sole purpose of prohibiting direct
 						</p>
-						<div class="participate">
+						<div class="participant">
 							<img class="photo" src="/img/photo3.png" alt="John Doe" />
-							<p>John Doe</p>
+							<p class="name">John Doe</p>
 						</div>
 					</div>
 				</div>
@@ -144,21 +158,21 @@
 			<div class="container footer">
 				<a class="footer-link" href="#">
 					<span class="copy">Copyright &copy; 2019</span>
-					<a class="logo-conainer" href="#">
-						<img src="img/logo.svg" alt="logo" />
+					<a class="logo-container" href="#">
+						<img class="logo-img" src="img/logo.svg" alt="logo" />
 						<p class="logo-text">traffico.</p>
 					</a>
 					<div class="social-container">
 						<a class="social-link" href="#">
-							<img class="social-logo" src="img/f.svg" alt="" />
+							<img class="social-logo" src="img/f.svg" alt="facebook" />
 						</a>
 
 						<a class="social-link" href="#"></a>
-							<img class="social-logo" src="img/t.svg" alt="" />
+							<img class="social-logo" src="img/t.svg" alt="twitter" />
 						</a>
 
 						<a class="social-link" href="#"></a>
-							<img class="social-logo" src="img/i.svg" alt="" />
+							<img class="social-logo" src="img/i.svg" alt="instagram" />
 						</a>
 					</div>
 				</a>
