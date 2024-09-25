@@ -195,7 +195,7 @@
 
 .client {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   justify-content: space-between;
   border-radius: 10px;
   height: 22.5rem;
