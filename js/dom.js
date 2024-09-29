@@ -5,6 +5,8 @@ const zooInput = document.getElementById("name-input");
 const visitorsInput = document.getElementById("visitors-input");
 const animInput = document.getElementById("number-anim-input");
 const itemsContainer = document.getElementById("card-container");
+const simVisTxt = document.getElementById("visitors-sum");
+const simAnimTxt = document.getElementById("animals-sum");
 
 const cardTemplate = ({ id, zoo, visitors, animals }) => `
 <div id="${id}" class="card" style="width: 286px">
@@ -55,6 +57,16 @@ export const renderItemsList = (items, onEditItem, onRemoveItem) => {
   for (const item of items) {
     addItemToPage(item, onEditItem, onRemoveItem);
   }
+
+  updateSums(items);
+};
+
+export const updateSums = (items) => {
+  const totalVisitors = items.reduce((sum, zoo) => sum + zoo.visitors, 0);
+  const totalAnimals = items.reduce((sum, zoo) => sum + zoo.animals, 0);
+
+  simVisTxt.textContent = totalVisitors;
+  simAnimTxt.textContent = totalAnimals;
 };
 
 export const getInputValues = () => {
