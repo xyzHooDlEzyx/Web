@@ -3,6 +3,7 @@ import {
   clearInput,
   renderItemsList,
   getInputValues,
+  updateSums,
 } from "./dom.js";
 
 const createButton = document.getElementById("create-btn");
@@ -32,6 +33,7 @@ createButton.addEventListener("click", (event) => {
   zoos.push(newZoo);
   addItemToPage(newZoo);
   clearInput();
+  updateSums(zoos);
 });
 
 searchButton.addEventListener("click", () => {
@@ -43,11 +45,13 @@ searchButton.addEventListener("click", () => {
       zoo.animals.toString().includes(query)
   );
   renderItemsList(filteredZoos);
+  updateSums(filteredZoos);
 });
 
 clearButton.addEventListener("click", () => {
   searchInput.value = "";
   renderItemsList(zoos);
+  updateSums(zoos);
 });
 
 const createPageLink = document.querySelector(".create-page");
@@ -55,11 +59,9 @@ const cardCreator = document.querySelector(".card-creator");
 
 const sumVisLink = document.querySelector(".sum-vis");
 const sumVisCard = document.querySelector(".sum-visitor");
-const simVisTxt = document.getElementById("visitors-sum");
 
 const sumAnimLink = document.querySelector(".sum-anim");
 const sumAnimCard = document.querySelector(".sum-animals");
-const simAnimTxt = document.getElementById("animals-sum");
 
 createPageLink.addEventListener("click", () => {
   cardCreator.style.display = "block";
@@ -72,8 +74,7 @@ sumVisLink.addEventListener("click", () => {
   sumVisCard.style.display = "block";
   sumAnimCard.style.display = "none";
 
-  const totalVisitors = zoos.reduce((sum, zoo) => sum + zoo.visitors, 0);
-  simVisTxt.textContent = totalVisitors;
+  updateSums(zoos);
 });
 
 sumAnimLink.addEventListener("click", () => {
@@ -81,18 +82,21 @@ sumAnimLink.addEventListener("click", () => {
   sumVisCard.style.display = "none";
   sumAnimCard.style.display = "block";
 
-  const totalAnimals = zoos.reduce((sum, zoo) => sum + zoo.animals, 0);
-  simAnimTxt.textContent = totalAnimals;
+  updateSums(zoos);
 });
 
 const sortByVis = document.querySelector(".sort-visitors");
 sortByVis.addEventListener("click", () => {
   zoos.sort((a, b) => b.visitors - a.visitors);
   renderItemsList(zoos);
+
+  updateSums(zoos);
 });
 
 const sortByAnim = document.querySelector(".sort-animals");
 sortByAnim.addEventListener("click", () => {
   zoos.sort((a, b) => b.animals - a.animals);
   renderItemsList(zoos);
+
+  updateSums(zoos);
 });
