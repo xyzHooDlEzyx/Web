@@ -12,6 +12,7 @@ const clearButton = document.getElementById("clear-btn");
 const searchInput = document.getElementById("search-input");
 
 let zoos = [];
+let filteredZoos = [];
 let zooId = 1;
 
 createButton.addEventListener("click", (event) => {
@@ -31,14 +32,15 @@ createButton.addEventListener("click", (event) => {
   };
 
   zoos.push(newZoo);
+  filteredZoos = zoos;
   addItemToPage(newZoo);
   clearInput();
-  updateSums(zoos);
+  updateSums(filteredZoos);
 });
 
 searchButton.addEventListener("click", () => {
   const query = searchInput.value.toLowerCase();
-  const filteredZoos = zoos.filter(
+  filteredZoos = zoos.filter(
     (zoo) =>
       zoo.zoo.toLowerCase().includes(query) ||
       zoo.visitors.toString().includes(query) ||
@@ -50,8 +52,9 @@ searchButton.addEventListener("click", () => {
 
 clearButton.addEventListener("click", () => {
   searchInput.value = "";
+  filteredZoos = zoos;
   renderItemsList(zoos);
-  updateSums(zoos);
+  updateSums(filteredZoos);
 });
 
 const createPageLink = document.querySelector(".create-page");
@@ -74,7 +77,7 @@ sumVisLink.addEventListener("click", () => {
   sumVisCard.style.display = "block";
   sumAnimCard.style.display = "none";
 
-  updateSums(zoos);
+  updateSums(filteredZoos);
 });
 
 sumAnimLink.addEventListener("click", () => {
@@ -82,21 +85,21 @@ sumAnimLink.addEventListener("click", () => {
   sumVisCard.style.display = "none";
   sumAnimCard.style.display = "block";
 
-  updateSums(zoos);
+  updateSums(filteredZoos);
 });
 
 const sortByVis = document.querySelector(".sort-visitors");
 sortByVis.addEventListener("click", () => {
-  zoos.sort((a, b) => b.visitors - a.visitors);
-  renderItemsList(zoos);
+  filteredZoos.sort((a, b) => b.visitors - a.visitors);
+  renderItemsList(filteredZoos);
 
-  updateSums(zoos);
+  updateSums(filteredZoos);
 });
 
 const sortByAnim = document.querySelector(".sort-animals");
 sortByAnim.addEventListener("click", () => {
-  zoos.sort((a, b) => b.animals - a.animals);
-  renderItemsList(zoos);
+  filteredZoos.sort((a, b) => b.animals - a.animals);
+  renderItemsList(filteredZoos);
 
-  updateSums(zoos);
+  updateSums(filteredZoos);
 });
