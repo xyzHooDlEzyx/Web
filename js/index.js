@@ -20,6 +20,14 @@ createButton.addEventListener("click", (event) => {
 
   const { zoo, visitors, animals } = getInputValues();
 
+  const existingZoo = zoos.find(
+    (names) => names.zoo.toLowerCase() === zoo.toLowerCase()
+  );
+  if (existingZoo) {
+    alert("A zoo with this name already exists! Please choose another name.");
+    return;
+  }
+
   if (!zoo || !visitors || !animals) {
     return;
   }
