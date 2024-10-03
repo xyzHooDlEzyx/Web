@@ -57,6 +57,14 @@ createButton.addEventListener("click", (event) => {
 
   const { zoo, visitors, animals } = getInputValues();
 
+  const existingZoo = zoos.find(
+    (names) => names.zoo.toLowerCase() === zoo.toLowerCase()
+  );
+  if (existingZoo) {
+    alert("A zoo with this name already exists! Please choose another name.");
+    return;
+  }
+
   if (!zoo || !visitors || !animals) {
     return;
   }
@@ -70,7 +78,9 @@ createButton.addEventListener("click", (event) => {
 
   zoos.push(newZoo);
   filteredZoos = zoos;
+
   addItemToPage(newZoo, editZoo, removeZoo);
+
   clearInput();
   updateSums(filteredZoos);
 });
@@ -83,6 +93,7 @@ searchButton.addEventListener("click", () => {
       zoo.visitors.toString().includes(query) ||
       zoo.animals.toString().includes(query)
   );
+
   renderItemsList(filteredZoos, editZoo, removeZoo);
   updateSums(filteredZoos);
 });
@@ -91,6 +102,7 @@ clearButton.addEventListener("click", () => {
   searchInput.value = "";
   filteredZoos = zoos;
   renderItemsList(zoos, editZoo, removeZoo);
+
   updateSums(filteredZoos);
 });
 
@@ -129,6 +141,7 @@ const sortByVis = document.querySelector(".sort-visitors");
 sortByVis.addEventListener("click", () => {
   filteredZoos.sort((a, b) => b.visitors - a.visitors);
   renderItemsList(filteredZoos, editZoo, removeZoo);
+
   updateSums(filteredZoos);
 });
 
@@ -136,5 +149,6 @@ const sortByAnim = document.querySelector(".sort-animals");
 sortByAnim.addEventListener("click", () => {
   filteredZoos.sort((a, b) => b.animals - a.animals);
   renderItemsList(filteredZoos, editZoo, removeZoo);
+
   updateSums(filteredZoos);
 });
