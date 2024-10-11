@@ -40,6 +40,13 @@ saveEditButton.addEventListener("click", () => {
     zoos[zooIndex].zoo = editZooName.value;
     zoos[zooIndex].visitors = parseInt(editVisitors.value, 10);
     zoos[zooIndex].animals = parseInt(editAnimals.value, 10);
+    const existingZoo = zoos.find(
+      (names) => names.zoo.toLowerCase() === editZooName.value.toLowerCase()
+    );
+    if (existingZoo && existingZoo.id !== currentEditId) {
+      alert("A zoo with this name already exists! Please choose another name.");
+      return;
+    }
     renderItemsList(zoos, editZoo, removeZoo);
     editModal.hide();
     updateSums(zoos);
