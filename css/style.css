@@ -32,6 +32,11 @@ body {
   width: 70%;
 }
 
+.container {
+  margin-left: 1rem;
+  margin-right: 0;
+}
+
 .card-controller {
   display: flex;
   justify-content: space-between;
