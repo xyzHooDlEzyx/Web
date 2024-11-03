@@ -1,5 +1,3 @@
 # Web
 
-lab5
-
-variant 6
+lab6
