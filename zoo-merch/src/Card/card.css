@@ -1,8 +1,7 @@
 .card {
   border-radius: 15px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  width: 20rem !important;
-  /* min-height: 377.19px; */
+  width: 17.5rem !important;
   text-align: center;
   transition: all 0.3s;
 }
@@ -59,7 +58,7 @@
 
 .card:hover {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  transform: translateY(-5%);
+  transform: translateY(-2%);
 }
 
 #card__top {

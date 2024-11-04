@@ -1,10 +1,11 @@
-import { useState } from "react";
 import "./home.css";
 import data from "../Data/data";
 import Card from "../card/card";
 import Button from "../button/button";
+import { useState } from "react";
 
 const Home = () => {
+  const [cards, setCards] = useState(data);
   return (
     <section className="home-section container">
       <div className="row align-items-center mb-5">
@@ -20,9 +21,9 @@ const Home = () => {
       </div>
 
       <div className="card-row text-center">
-        {data.map((item) => (
-          <div className="card-container" key={item.id}>
-            <Card {...item} />
+        {cards.map((card) => (
+          <div className="card-container" key={card.id}>
+            <Card {...card} />
           </div>
         ))}
       </div>
