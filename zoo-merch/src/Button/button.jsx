@@ -15,6 +15,9 @@ export default function Button({
     case "outline":
       style = `button button-outline ${Big && "button-big"}`;
       break;
+    case "outline-src":
+      style = `button button-outline ${Big && "button-big"}`;
+      break;
   }
   return (
     <button className={style} {...props}>

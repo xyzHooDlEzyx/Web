@@ -15,7 +15,7 @@ const data = [
     description:
       "You can drink coffee from this mug made by monkeys enslaved for manufacturing them and feel the greatness of humanity.",
     descriptionSmall:
-      "You can drink coffee from this mug and feel the greatness of humanity.",
+      "Drink coffee from this mug and feel suppremacy of humanity.",
     price: 10,
     alter: "mug",
     imgSrc: "/1_18.png",

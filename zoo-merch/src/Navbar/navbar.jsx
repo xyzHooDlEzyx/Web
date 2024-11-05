@@ -1,41 +1,63 @@
 import { useEffect, useRef, useState } from "react";
+import { useLocation } from "react-router-dom";
 import "./navbar.css";
 
 const Navbar = () => {
   const [sliderStyle, setSliderStyle] = useState({ width: 0, left: 0 });
   const navRef = useRef(null);
+  const location = useLocation();
+  const [lastIndex, setLastIndex] = useState(0);
+  const [prevStyle, setPrevStyle] = useState({ width: 120, left: 0 });
 
   useEffect(() => {
     const li = navRef.current.querySelectorAll(".nav ul li");
+    const path = location.pathname;
 
-    let left_pos = 0;
-    let index_value = 0;
+    const getActiveIndex = () => {
+      switch (path) {
+        case "/catalog":
+          return 1;
+        case "/cart":
+          return 2;
+        default:
+          return 0;
+      }
+    };
+
+    const activeIndex = getActiveIndex();
+    const isMovingRight = activeIndex > lastIndex;
 
     if (li.length > 0) {
+      const newWidth = li[activeIndex].clientWidth + "px";
+      const newLeft = getLeftPos(activeIndex, li) + "px";
+
       setSliderStyle({
-        width: li[0].clientWidth + "px",
-        left: left_pos + "px",
+        width: prevStyle.width,
+        left: prevStyle.left,
+        // transition: "none",
       });
 
-      li.forEach((element, index) => {
-        element.onclick = function () {
-          index_value = index;
-          setSliderStyle({
-            width: element.clientWidth + "px",
-            left: getLeftPos(index_value, li) + "px",
-          });
-        };
-      });
+      setTimeout(() => {
+        setSliderStyle({
+          width: newWidth,
+          left: newLeft,
+          // transition: isMovingRight
+          //   ? "left 0.3s ease, width 0.3s ease"
+          //   : "left 0.3s ease-in-out, width 0.3s ease-in-out",
+        });
+      }, 0);
+
+      setPrevStyle({ width: newWidth, left: newLeft });
     }
 
-    function getLeftPos(index) {
+    function getLeftPos(index, items) {
       let pos = 0;
       for (let i = 0; i < index; i++) {
-        pos += li[i].clientWidth;
+        pos += items[i].clientWidth;
       }
       return pos;
     }
-  }, []);
+  }, [location, lastIndex]);
 
   return (
     <header>
@@ -51,17 +73,21 @@ const Navbar = () => {
           <div className="slider-container">
             <ul>
               <li className="home">
-                <a href="#home">HOME</a>
+                <a href="/">HOME</a>
               </li>
               <li className="catalog">
-                <a href="#catalog">CATALOG</a>
+                <a href="/catalog">CATALOG</a>
               </li>
               <li className="cart">
-                <a href="#cart">CART</a>
+                <a href="/cart">CART</a>
               </li>
               <span
                 className="slider"
-                style={{ width: sliderStyle.width, left: sliderStyle.left }}
+                style={{
+                  width: sliderStyle.width,
+                  left: sliderStyle.left,
+                  // transition: sliderStyle.transition,
+                }}
               ></span>
             </ul>
           </div>
