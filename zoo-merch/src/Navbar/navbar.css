@@ -80,5 +80,5 @@ nav ul li a:active {
   border-radius: 30px;
   background-color: #df4d60e1;
   z-index: 1;
-  transition: all width 0.3s ease, left 0.3s ease;
+  /* transition: all width 0.3s ease, left 0.3s ease; */
 }
