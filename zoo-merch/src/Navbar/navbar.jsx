@@ -1,20 +1,17 @@
 import { useEffect, useRef, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./navbar.css";
 
 const Navbar = () => {
   const [sliderStyle, setSliderStyle] = useState({ width: 0, left: 0 });
   const navRef = useRef(null);
   const location = useLocation();
-  const [lastIndex, setLastIndex] = useState(0);
-  const [prevStyle, setPrevStyle] = useState({ width: 120, left: 0 });
 
   useEffect(() => {
     const li = navRef.current.querySelectorAll(".nav ul li");
-    const path = location.pathname;
 
     const getActiveIndex = () => {
-      switch (path) {
+      switch (location.pathname) {
         case "/catalog":
           return 1;
         case "/cart":
@@ -25,29 +22,12 @@ const Navbar = () => {
     };
 
     const activeIndex = getActiveIndex();
-    const isMovingRight = activeIndex > lastIndex;
-
     if (li.length > 0) {
-      const newWidth = li[activeIndex].clientWidth + "px";
-      const newLeft = getLeftPos(activeIndex, li) + "px";
-
       setSliderStyle({
-        width: prevStyle.width,
-        left: prevStyle.left,
-        // transition: "none",
+        width: li[activeIndex].clientWidth + "px",
+        left: getLeftPos(activeIndex, li) + "px",
+        transition: "width 0.3s ease, left 0.3s ease",
       });
-
-      setTimeout(() => {
-        setSliderStyle({
-          width: newWidth,
-          left: newLeft,
-          // transition: isMovingRight
-          //   ? "left 0.3s ease, width 0.3s ease"
-          //   : "left 0.3s ease-in-out, width 0.3s ease-in-out",
-        });
-      }, 0);
-
-      setPrevStyle({ width: newWidth, left: newLeft });
     }
 
     function getLeftPos(index, items) {
@@ -57,7 +37,7 @@ const Navbar = () => {
       }
       return pos;
     }
-  }, [location, lastIndex]);
+  }, [location]);
 
   return (
     <header>
@@ -73,20 +53,20 @@ const Navbar = () => {
           <div className="slider-container">
             <ul>
               <li className="home">
-                <a href="/">HOME</a>
+                <Link to="/">HOME</Link>
               </li>
               <li className="catalog">
-                <a href="/catalog">CATALOG</a>
+                <Link to="/catalog">CATALOG</Link>
               </li>
               <li className="cart">
-                <a href="/cart">CART</a>
+                <Link to="/cart">CART</Link>
               </li>
               <span
                 className="slider"
                 style={{
                   width: sliderStyle.width,
                   left: sliderStyle.left,
-                  // transition: sliderStyle.transition,
+                  transition: sliderStyle.transition,
                 }}
               ></span>
             </ul>
