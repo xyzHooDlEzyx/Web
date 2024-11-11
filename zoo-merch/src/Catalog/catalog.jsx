@@ -9,7 +9,7 @@ const Catalog = () => {
   return (
     <>
       <Searchbar />
-      <div className="card-row text-center">
+      <div className="content-row text-center">
         {cards.map((card) => (
           <div className="card-container" key={card.id}>
             <Card {...card} type="full" />
