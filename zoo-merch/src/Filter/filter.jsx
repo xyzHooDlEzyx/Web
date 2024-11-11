@@ -1,9 +1,10 @@
+import React from "react";
 import "./filter.css";
 
-const Filter = ({ Label, options, id }) => {
+const Filter = ({ Label, options, id, onChange }) => {
   return (
-    <select className="filter" id={id}>
-      <option>{Label}</option>
+    <select className="filter" id={id} onChange={onChange}>
+      <option value="">{Label}</option>
       {options.map((option, index) => (
         <option key={index} value={option}>
           {option}

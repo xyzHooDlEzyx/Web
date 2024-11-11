@@ -1,27 +1,51 @@
-import "./searchbar.css";
-import Button from "../button/button";
+import React from "react";
+import { useProductContext } from "../Context/ProductContext";
 import Filter from "../Filter/filter";
+import "./searchbar.css";
 
 const Searchbar = () => {
-  const filter1Options = ["Option 1", "Option 2", "Option 3"];
-  const filter2Options = ["Option 1", "Option 2", "Option 3"];
-  const filter3Options = ["Option 1", "Option 2", "Option 3"];
+  const { updateSearchQuery, updateSortOption } = useProductContext();
+
+  const handleSearchInput = (e) => {
+    if (e.key === "Enter") {
+      updateSearchQuery(e.target.value);
+    }
+  };
+
+  const handleNameSortChange = (e) => {
+    updateSortOption("name", e.target.value);
+  };
+
+  const handlePriceSortChange = (e) => {
+    updateSortOption("price", e.target.value);
+  };
 
   return (
     <div className="searchbar-container">
-      <Filter Label="Filter 1" options={filter1Options} id="filter-1" />
-      <Filter Label="Filter 2" options={filter2Options} id="filter-2" />
-      <Filter Label="Filter 3" options={filter3Options} id="filter-3" />
+      <Filter
+        Label="Sort by Name"
+        options={["A-Z", "Z-A"]}
+        id="filter-name"
+        onChange={handleNameSortChange}
+      />
+
+      <Filter
+        Label="Sort by Price"
+        options={["Ascending", "Descending"]}
+        id="filter-price"
+        onChange={handlePriceSortChange}
+      />
+
       <div className="search-input-container">
         <input
           id="search-input"
           type="text"
           className="search-input"
-          placeholder="Type something..."
+          placeholder="Search products..."
+          onKeyDown={handleSearchInput}
         />
-        <img src="/searchbar.svg" className="search-icon" />
+        <img src="/searchbar.svg" className="search-icon" alt="search-icon" />
       </div>
-      <Button type="outline">Apply</Button>
     </div>
   );
 };

@@ -6,3 +6,7 @@
   margin: 20px 0;
   min-height: 65.3vh;
 }
+
+.card-container {
+  width: 17.5rem !important;
+}

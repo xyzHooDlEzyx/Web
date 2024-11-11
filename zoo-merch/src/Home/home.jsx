@@ -1,11 +1,19 @@
-import "./home.css";
-import data from "../Data/data";
+import React, { useState } from "react";
+import { useProductContext } from "../Context/ProductContext";
 import Card from "../card/card";
 import Button from "../button/button";
-import { useState } from "react";
+import "./home.css";
 
 const Home = () => {
-  const [cards, setCards] = useState(data);
+  const { filteredProducts } = useProductContext();
+  const [visibleProducts, setVisibleProducts] = useState(3);
+
+  const loadMoreItems = () => setVisibleProducts((prev) => prev + 3);
+
+  if (!Array.isArray(filteredProducts) || filteredProducts.length === 0) {
+    return <p>Loading products...</p>;
+  }
+
   return (
     <section className="home-section container">
       <div className="row align-items-center mb-5">
@@ -21,16 +29,18 @@ const Home = () => {
       </div>
 
       <div className="card-row text-center">
-        {cards.map((card) => (
-          <div className="card-container" key={card.id}>
-            <Card {...card} />
+        {filteredProducts.slice(0, visibleProducts).map((product) => (
+          <div className="card-container" key={product.id}>
+            <Card {...product} />
           </div>
         ))}
       </div>
 
-      <div className="text-center">
-        <Button>View More</Button>
-      </div>
+      {visibleProducts < filteredProducts.length && (
+        <div className="text-center mt-4">
+          <Button onClick={loadMoreItems}>View More</Button>
+        </div>
+      )}
     </section>
   );
 };

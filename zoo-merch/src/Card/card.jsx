@@ -1,3 +1,5 @@
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./card.css";
 import Button from "../button/button";
 
@@ -11,6 +13,12 @@ const Card = ({
   price,
   type = "simple",
 }) => {
+  const navigate = useNavigate();
+
+  const handleViewMore = () => {
+    navigate(`/item/${id}`);
+  };
+
   if (type === "simple") {
     return (
       <div className="card card_simple">
@@ -33,7 +41,9 @@ const Card = ({
             <h3 className="heading-tertiary">Price:</h3>
             <span className="card_price">{price}</span>
           </div>
-          <Button Big={true}>View more</Button>
+          <Button Big={true} onClick={handleViewMore}>
+            View more
+          </Button>
         </div>
       </div>
     );

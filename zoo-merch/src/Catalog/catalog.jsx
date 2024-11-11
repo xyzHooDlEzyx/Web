@@ -1,22 +1,23 @@
 import "./catalog.css";
-import Searchbar from "../Searchbar/searchbar";
+import React from "react";
+import { useProductContext } from "../Context/ProductContext";
 import Card from "../card/card";
-import data from "../Data/data";
-import { useState } from "react";
+import Searchbar from "../Searchbar/searchbar";
 
 const Catalog = () => {
-  const [cards, setCards] = useState(data);
+  const { filteredProducts } = useProductContext();
+
   return (
-    <>
+    <div className="catalog-page">
       <Searchbar />
       <div className="content-row text-center">
-        {cards.map((card) => (
-          <div className="card-container" key={card.id}>
-            <Card {...card} type="full" />
+        {filteredProducts.map((product) => (
+          <div className="card-container" key={product.id}>
+            <Card {...product} type="full" />
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 

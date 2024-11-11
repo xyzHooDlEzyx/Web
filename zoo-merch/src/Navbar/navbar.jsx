@@ -11,13 +11,15 @@ const Navbar = () => {
     const li = navRef.current.querySelectorAll(".nav ul li");
 
     const getActiveIndex = () => {
-      switch (location.pathname) {
-        case "/catalog":
-          return 1;
-        case "/cart":
-          return 2;
-        default:
-          return 0;
+      if (
+        location.pathname.includes("/catalog") ||
+        location.pathname.includes("/item")
+      ) {
+        return 1;
+      } else if (location.pathname === "/cart") {
+        return 2;
+      } else {
+        return 0;
       }
     };
 
