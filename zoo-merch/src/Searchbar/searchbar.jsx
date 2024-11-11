@@ -1,26 +1,17 @@
 import "./searchbar.css";
 import Button from "../button/button";
+import Filter from "../Filter/filter";
+
 const Searchbar = () => {
+  const filter1Options = ["Option 1", "Option 2", "Option 3"];
+  const filter2Options = ["Option 1", "Option 2", "Option 3"];
+  const filter3Options = ["Option 1", "Option 2", "Option 3"];
+
   return (
     <div className="searchbar-container">
-      <select id="filter-1" className="filter">
-        <option>Filter 1</option>
-        <option>Option 1</option>
-        <option>Option 2</option>
-        <option>Option 3</option>
-      </select>
-      <select id="filter-2" className="filter">
-        <option>Filter 2</option>
-        <option>Option 1</option>
-        <option>Option 2</option>
-        <option>Option 3</option>
-      </select>
-      <select id="filter-3" className="filter">
-        <option>Filter 3</option>
-        <option>Option 1</option>
-        <option>Option 2</option>
-        <option>Option 3</option>
-      </select>
+      <Filter Label="Filter 1" options={filter1Options} id="filter-1" />
+      <Filter Label="Filter 2" options={filter2Options} id="filter-2" />
+      <Filter Label="Filter 3" options={filter3Options} id="filter-3" />
       <div className="search-input-container">
         <input
           id="search-input"
