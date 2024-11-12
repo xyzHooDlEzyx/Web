@@ -30,6 +30,7 @@
 .card_img {
   height: 12.8rem;
   width: auto;
+  object-fit: contain;
 }
 
 .card_value {

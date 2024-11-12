@@ -5,12 +5,12 @@ import Button from "../button/button";
 import "./home.css";
 
 const Home = () => {
-  const { filteredProducts } = useProductContext();
+  const { products } = useProductContext();
   const [visibleProducts, setVisibleProducts] = useState(3);
 
   const loadMoreItems = () => setVisibleProducts((prev) => prev + 3);
 
-  if (!Array.isArray(filteredProducts) || filteredProducts.length === 0) {
+  if (!Array.isArray(products) || products.length === 0) {
     return <p>Loading products...</p>;
   }
 
@@ -29,14 +29,14 @@ const Home = () => {
       </div>
 
       <div className="card-row text-center">
-        {filteredProducts.slice(0, visibleProducts).map((product) => (
+        {products.slice(0, visibleProducts).map((product) => (
           <div className="card-container" key={product.id}>
             <Card {...product} />
           </div>
         ))}
       </div>
 
-      {visibleProducts < filteredProducts.length && (
+      {visibleProducts < products.length && (
         <div className="text-center mt-4">
           <Button onClick={loadMoreItems}>View More</Button>
         </div>

@@ -21,15 +21,15 @@
 .image-container {
   width: 600px;
   display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  height: 600px; /* Set a height if needed to match the image */
+  justify-content: center;
+  align-items: center;
+  height: 600px;
 }
 
 .item-image {
-  max-height: 100%; /* Make the image responsive */
-  max-width: 100%; /* Ensure it fits within the container */
-  object-fit: contain; /* Maintain aspect ratio and fit within the container */
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
   border-radius: 8px;
 }
 
