@@ -38,6 +38,10 @@
   justify-content: space-around;
 }
 
+.btn {
+  align-items: center;
+}
+
 .card_price {
   font-size: 2rem;
   font-weight: 300;

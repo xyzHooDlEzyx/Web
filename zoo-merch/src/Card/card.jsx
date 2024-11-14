@@ -25,6 +25,11 @@ const Card = ({
         <img src={imgSrc} alt={alter} className="card_img" />
         <h2 className="heading-secondary">{title}</h2>
         <p className="paragraph">{descriptionSmall}</p>
+        <div className="btn">
+          <Button Big={true} onClick={handleViewMore}>
+            View item
+          </Button>
+        </div>
       </div>
     );
   } else if (type === "full") {
@@ -42,7 +47,7 @@ const Card = ({
             <span className="card_price">{price}</span>
           </div>
           <Button Big={true} onClick={handleViewMore}>
-            View more
+            View item
           </Button>
         </div>
       </div>

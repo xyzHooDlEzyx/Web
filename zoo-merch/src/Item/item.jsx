@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useProductContext } from "../Context/ProductContext";
 import Button from "../button/button";
 import "./item.css";
@@ -7,6 +7,7 @@ import "./item.css";
 const Item = () => {
   const { id } = useParams();
   const { products } = useProductContext();
+  const navigate = useNavigate();
 
   console.log(products);
   if (!Array.isArray(products)) {
@@ -29,9 +30,7 @@ const Item = () => {
         <div className="desc-and-cart">
           <div className="proxy">
             <h2 className="item-title">{item.title}</h2>
-            <Link to="/catalog" className="back-to-catalog-button">
-              Back to Catalog
-            </Link>
+            <Button onClick={() => navigate(-1)}>Go Back</Button>
           </div>
 
           <p className="item-description">{item.description}</p>
