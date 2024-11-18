@@ -1,18 +1,36 @@
-import React, { useState } from "react";
-import { useProductContext } from "../Context/ProductContext";
+import React, { useState, useEffect } from "react";
+import { fetchProducts } from "../../api/productsApi";
 import Card from "../card/card";
 import Button from "../button/button";
+import Loading from "../Loading/loading";
 import "./home.css";
 
 const Home = () => {
-  const { products } = useProductContext();
+  const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
   const [visibleProducts, setVisibleProducts] = useState(3);
 
-  const loadMoreItems = () => setVisibleProducts((prev) => prev + 3);
+  useEffect(() => {
+    const loadProducts = async () => {
+      try {
+        const data = await fetchProducts();
+        setTimeout(() => {
+          setProducts(data);
+          setIsLoading(false);
+        }, 2000);
+      } catch (error) {
+        console.error("Error loading products:", error);
+        setIsLoading(false);
+      }
+    };
 
-  if (!Array.isArray(products) || products.length === 0) {
-    return <p>Loading products...</p>;
-  }
+    loadProducts();
+  }, []);
+
+  if (isLoading) return <Loading />;
+
+  const loadMoreItems = () => setVisibleProducts((prev) => prev + 3);
 
   return (
     <section className="home-section container">

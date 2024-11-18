@@ -1,41 +1,43 @@
-import React from "react";
-import { useProductContext } from "../Context/ProductContext";
+import React, { useState, useEffect } from "react";
+import { fetchProducts } from "../../api/productsApi";
 import Filter from "../Filter/filter";
 import "./searchbar.css";
 
-const Searchbar = () => {
-  const { updateSearchQuery, updateSortOption } = useProductContext();
+const Searchbar = ({ onProductsUpdate }) => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [sortOption, setSortOption] = useState("");
 
-  const handleSearchInput = (e) => {
-    if (e.key === "Enter") {
-      updateSearchQuery(e.target.value);
+  const fetchFilteredProducts = async () => {
+    try {
+      const products = await fetchProducts(searchQuery, sortOption);
+      onProductsUpdate(products);
+    } catch (error) {
+      console.error("Error fetching filtered products:", error);
     }
   };
 
-  const handleNameSortChange = (e) => {
-    updateSortOption("name", e.target.value);
+  useEffect(() => {
+    fetchFilteredProducts();
+  }, [searchQuery, sortOption]);
+
+  const handleSearchInput = (e) => {
+    if (e.key === "Enter") {
+      setSearchQuery(e.target.value);
+    }
   };
 
-  const handlePriceSortChange = (e) => {
-    updateSortOption("price", e.target.value);
+  const handleSortChange = (e) => {
+    setSortOption(e.target.value);
   };
 
   return (
     <div className="searchbar-container">
       <Filter
-        Label="Sort by Name"
-        options={["A-Z", "Z-A"]}
-        id="filter-name"
-        onChange={handleNameSortChange}
+        Label="Filters"
+        options={["A-Z", "Z-A", "Price Asc", "Price Desc"]}
+        id="filter"
+        onChange={handleSortChange}
       />
-
-      <Filter
-        Label="Sort by Price"
-        options={["Ascending", "Descending"]}
-        id="filter-price"
-        onChange={handlePriceSortChange}
-      />
-
       <div className="search-input-container">
         <input
           id="search-input"
