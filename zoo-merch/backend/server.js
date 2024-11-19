@@ -1,25 +1,15 @@
 import express from "express";
 import cors from "cors";
-import {
-  getProducts,
-  getProduct,
-  buildProductQuery,
-  pool,
-} from "../backend/database.js";
+import { getProduct, buildProductQuery, pool } from "../backend/database.js";
 
 const app = express();
 app.use(cors());
 
 app.get("/products", async (req, res, next) => {
   try {
-    const { search = "", sort = "" } = req.query;
+    const { search = "", sort = "", filter = "" } = req.query;
 
-    if (!search && !sort) {
-      const products = await getProducts();
-      return res.json(products);
-    }
-
-    const { query, params } = buildProductQuery(search, sort);
+    const { query, params } = buildProductQuery(search, sort, filter);
 
     console.log("Executing query:", query);
     console.log("With params:", params);

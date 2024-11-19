@@ -12,11 +12,6 @@ export const pool = mysql
   })
   .promise();
 
-export async function getProducts() {
-  const [rows] = await pool.query("select * from products");
-  return rows;
-}
-
 export async function getProduct(id) {
   const [rows] = await pool.query(
     `
@@ -29,13 +24,38 @@ export async function getProduct(id) {
   return rows;
 }
 
-export function buildProductQuery(search, sort) {
+export function buildProductQuery(search, sort, filter) {
   let query = "SELECT * FROM products";
   const params = [];
 
   if (search) {
     query += " WHERE title LIKE ?";
     params.push(`%${search}%`);
+  }
+
+  if (filter) {
+    if (search) {
+      query += " AND";
+    } else {
+      query += " WHERE";
+    }
+
+    switch (filter) {
+      case ">10$":
+        query += " price > ?";
+        params.push(10);
+        break;
+      case "10$>x>20$":
+        query += " price > ? AND price < ?";
+        params.push(10, 20);
+        break;
+      case ">15$":
+        query += " price > ?";
+        params.push(15);
+        break;
+      default:
+        break;
+    }
   }
 
   if (sort) {

@@ -6,10 +6,15 @@ import "./searchbar.css";
 const Searchbar = ({ onProductsUpdate }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOption, setSortOption] = useState("");
+  const [filterOption, setFilterOption] = useState("");
 
   const fetchFilteredProducts = async () => {
     try {
-      const products = await fetchProducts(searchQuery, sortOption);
+      const products = await fetchProducts(
+        searchQuery,
+        sortOption,
+        filterOption
+      );
       onProductsUpdate(products);
     } catch (error) {
       console.error("Error fetching filtered products:", error);
@@ -18,7 +23,7 @@ const Searchbar = ({ onProductsUpdate }) => {
 
   useEffect(() => {
     fetchFilteredProducts();
-  }, [searchQuery, sortOption]);
+  }, [searchQuery, sortOption, filterOption]);
 
   const handleSearchInput = (e) => {
     if (e.key === "Enter") {
@@ -30,13 +35,23 @@ const Searchbar = ({ onProductsUpdate }) => {
     setSortOption(e.target.value);
   };
 
+  const handleFilterChange = (e) => {
+    setFilterOption(e.target.value);
+  };
+
   return (
     <div className="searchbar-container">
       <Filter
-        Label="Filters"
+        Label="Sorting"
         options={["A-Z", "Z-A", "Price Asc", "Price Desc"]}
-        id="filter"
+        id="sorting"
         onChange={handleSortChange}
+      />
+      <Filter
+        Label="Filters"
+        options={[">10$", "10$>x>20$", ">15$"]}
+        id="filter"
+        onChange={handleFilterChange}
       />
       <div className="search-input-container">
         <input
