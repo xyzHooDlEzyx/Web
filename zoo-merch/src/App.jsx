@@ -8,6 +8,7 @@ import Footer from "./footer/footer";
 import Item from "./Item/item";
 import store from "./store/store";
 import CheckoutPage from "./CheckoutPage/CheckoutPage";
+import SuccessPage from "./SuccessPage/SuccessPage";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
@@ -22,6 +23,7 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/item/:id" element={<Item />} />
           <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/success" element={<SuccessPage />} />
         </Routes>
         <Footer />
       </Router>

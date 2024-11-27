@@ -2,11 +2,16 @@ import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import Button from "../button/button";
+import { clearCart } from "../store/actions/cartActions";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import "./checkout.css";
 
 const CheckoutPage = () => {
   const [isRussian, setIsRussian] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const checkPhoneAndEmail = (phone, email) => {
     if (phone.startsWith("+7")) {
@@ -28,8 +33,8 @@ const CheckoutPage = () => {
     if (!checkPhoneAndEmail(values.phoneNumber, values.email)) {
       return;
     }
-
-    alert("Form submitted successfully!");
+    dispatch(clearCart());
+    navigate("/success");
   };
 
   const validationSchema = Yup.object({
@@ -79,12 +84,7 @@ const CheckoutPage = () => {
         <Form>
           <div className="form-group">
             <label htmlFor="firstName">First Name</label>
-            <Field
-              type="text"
-              id="firstName"
-              name="firstName"
-              disabled={isRussian}
-            />
+            <Field type="text" id="firstName" name="firstName" />
             <ErrorMessage
               name="firstName"
               component="div"
@@ -94,12 +94,7 @@ const CheckoutPage = () => {
 
           <div className="form-group">
             <label htmlFor="lastName">Last Name</label>
-            <Field
-              type="text"
-              id="lastName"
-              name="lastName"
-              disabled={isRussian}
-            />
+            <Field type="text" id="lastName" name="lastName" />
             <ErrorMessage
               name="lastName"
               component="div"
@@ -109,7 +104,7 @@ const CheckoutPage = () => {
 
           <div className="form-group">
             <label htmlFor="email">Email</label>
-            <Field type="email" id="email" name="email" disabled={isRussian} />
+            <Field type="email" id="email" name="email" />
             <ErrorMessage
               name="email"
               component="div"
@@ -119,12 +114,7 @@ const CheckoutPage = () => {
 
           <div className="form-group">
             <label htmlFor="phoneNumber">Phone Number</label>
-            <Field
-              type="text"
-              id="phoneNumber"
-              name="phoneNumber"
-              disabled={isRussian}
-            />
+            <Field type="text" id="phoneNumber" name="phoneNumber" />
             <ErrorMessage
               name="phoneNumber"
               component="div"
@@ -134,12 +124,7 @@ const CheckoutPage = () => {
 
           <div className="form-group">
             <label htmlFor="address">Address</label>
-            <Field
-              type="text"
-              id="address"
-              name="address"
-              disabled={isRussian}
-            />
+            <Field type="text" id="address" name="address" />
             <ErrorMessage
               name="address"
               component="div"
@@ -149,12 +134,7 @@ const CheckoutPage = () => {
 
           <div className="form-group">
             <label htmlFor="creditCard">Credit Card Number</label>
-            <Field
-              type="text"
-              id="creditCard"
-              name="creditCard"
-              disabled={isRussian}
-            />
+            <Field type="text" id="creditCard" name="creditCard" />
             <ErrorMessage
               name="creditCard"
               component="div"
@@ -162,9 +142,7 @@ const CheckoutPage = () => {
             />
           </div>
 
-          <Button type="submit" disabled={isRussian}>
-            Submit
-          </Button>
+          <Button type="submit">Submit</Button>
         </Form>
       </Formik>
     </div>
