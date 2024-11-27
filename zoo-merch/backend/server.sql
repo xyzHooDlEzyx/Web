@@ -17,7 +17,7 @@ INSERT INTO products (title, description, descriptionSmall, price, alterText, im
 VALUES 
 ('Cursed giraffe', 'He just begs you to kill him out of mercy with a chainsaw.', 'He just begs you to kill him out of mercy with a chainsaw.', 30.00, 'giraffe', '/cursed-giraffe.png', NULL, 100),
 ('ZOOKEEPER mug', 'You can drink coffee from this mug made by monkeys enslaved for manufacturing them and feel the greatness of humanity.', 'Drink coffee from this mug and feel supremacy of humanity.', 10.00, 'mug', '/1_18.png', '350 ml, 250 ml', 200),
-('Cap', 'This can be quite unexpected but this is a normal cap.', 'This can be quite unexpected but this is a normal cap.', 15.00, 'cap', '/Prod-10.png', 'XL, L, M, S', 0),
+('Cap', 'This can be quite unexpected but this is a normal cap.', 'This can be quite unexpected but this is a normal cap.', 15.00, 'cap', '/Prod-10.png', 'XL, L, M, S', 150),
 ('Elephant Plush Toy', 'A soft and cuddly plush toy of an elephant, perfect for kids and adults alike.', 'A soft plush elephant toy.', 25.00, 'elephant plush', '/elephant-plush.png', NULL, 150),
 ('Lion T-shirt', 'A comfortable cotton T-shirt with a fierce lion print. Show off your wild side!', 'Cotton T-shirt with a lion print.', 20.00, 'lion t-shirt', '/lion-t-shirt.png', 'XL, L, M, S', 100),
 ('Giraffe Socks', 'Fun and quirky giraffe-patterned socks that will make your feet stand out.', 'Quirky giraffe socks.', 8.00, 'giraffe socks', '/giraffe-socks1.png', '40-42, 38-40, 36-38', 300),
