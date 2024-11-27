@@ -1,0 +1,148 @@
+.checkout-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.alert-card {
+  border-radius: 15px;
+  border: 4px #c82333;
+  background-color: #c14854;
+}
+
+.alert-message {
+  margin: 10px;
+  flex-wrap: wrap;
+  color: rgb(0, 0, 0);
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+label {
+  text-align: left;
+}
+
+form {
+  min-width: 373.6px;
+  text-align: center;
+}
+
+.form-group {
+  display: flex;
+  justify-items: center;
+  flex-direction: column;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+label {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  width: 100%;
+  background-color: #f9f9f9;
+  margin-bottom: 10px;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="number"]:focus {
+  outline: none;
+  border-color: #007bff;
+  background-color: #e9f5ff;
+}
+
+.error-message {
+  color: #f44336;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+button {
+  padding: 12px 20px;
+  margin: 10px 0;
+  font-size: 1.1rem;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 50%;
+  transition: background-color 0.3s;
+  text-align: center;
+}
+
+button:hover,
+button:active {
+  background-color: #0056b3;
+}
+
+.checkout-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  padding: 15px;
+  background-color: #fff;
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.checkout-summary .total-price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.checkout-summary .total-price-amount {
+  font-size: 1.5rem;
+  color: #007bff;
+}
+
+button.submit-btn {
+  background-color: #28a745;
+}
+
+button.submit-btn:hover,
+button.submit-btn:active {
+  background-color: #218838;
+}
+
+button.clear-btn {
+  background-color: #dc3545;
+}
+
+button.clear-btn:hover,
+button.clear-btn:active {
+  background-color: #c82333;
+}
+
+.success-message {
+  color: #28a745;
+  font-size: 1.2rem;
+  text-align: center;
+  margin-top: 20px;
+}

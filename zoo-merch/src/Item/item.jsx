@@ -59,24 +59,31 @@ const Item = () => {
   }, [id]);
 
   const handleAddToCart = () => {
-    if (item && selectedSize) {
-      dispatch(addToCart({ ...item, size: selectedSize }, quantity));
-      alert(
-        `${item.title} (${selectedSize}) added to cart with quantity: ${quantity}`
-      );
+    if (item) {
+      if (sizes.length > 0 && !selectedSize) {
+        alert("Please select a size before adding to cart.");
+      } else {
+        dispatch(addToCart({ ...item, size: selectedSize }, quantity));
+        alert(
+          `${item.title} ${
+            selectedSize ? `(${selectedSize})` : ""
+          } added to cart with quantity: ${quantity}`
+        );
 
-      if (quantity === maxQuantity) {
-        setIsButtonDisabled(true);
-        localStorage.setItem(`isButtonDisabled_${id}`, "true");
+        if (quantity === maxQuantity) {
+          setIsButtonDisabled(true);
+          localStorage.setItem(`isButtonDisabled_${id}`, "true");
+        }
       }
-    } else {
-      alert("Please select a size before adding to cart.");
     }
   };
 
   const handleQuantityChange = (e) => {
-    const value = e.target.value;
-    if (value > 0 && value <= maxQuantity) {
+    let value = e.target.value;
+    value = parseInt(value, 10);
+    if (isNaN(value)) {
+      value = 1;
+    } else if (value <= maxQuantity && value > 0) {
       setQuantity(value);
     }
   };
@@ -106,10 +113,12 @@ const Item = () => {
             <h2 className="item-title">{item.title}</h2>
             <Button onClick={() => navigate(-1)}>Go Back</Button>
           </div>
+
           <p className="item-description">{item.description}</p>
           <p className="item-price">
             Price: ${parseFloat(item.price).toFixed(2)}
           </p>
+
           <div className="quant_size">
             <input
               type="number"
@@ -126,6 +135,7 @@ const Item = () => {
 
             {sizes.length > 0 && (
               <Filter
+                className="filterclass"
                 Label="Types"
                 options={sizes}
                 id="size-selector"
@@ -133,6 +143,7 @@ const Item = () => {
               />
             )}
           </div>
+
           {!isButtonDisabled && (
             <Button onClick={handleAddToCart}>Add to Cart</Button>
           )}

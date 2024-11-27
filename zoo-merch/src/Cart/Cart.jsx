@@ -1,29 +1,29 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { removeFromCart, clearCart } from "../store/actions/cartActions";
+import { useNavigate } from "react-router-dom";
 import Button from "../button/button";
 import "./cart.css";
 
 const Cart = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { items } = useSelector((state) => state.cart);
 
-  const checkIfItemExists = (item, selectedSize) => {
-    return items.find(
-      (cartItem) => cartItem.id === item.id && cartItem.size === selectedSize
-    );
-  };
-
-  const handleRemove = (id) => {
-    dispatch(removeFromCart(id));
+  const handleRemove = (id, size) => {
+    dispatch(removeFromCart(id, size));
   };
 
   const handleClearCart = () => {
     dispatch(clearCart());
   };
 
+  const handleProceedToCheckout = () => {
+    navigate("/checkout");
+  };
+
   const totalPrice = items.reduce(
-    (total, item) => total + item.price * item.quantity, // Обчислюємо суму для кожного товару
+    (total, item) => total + item.price * item.quantity,
     0
   );
 
@@ -35,7 +35,7 @@ const Cart = () => {
       ) : (
         <ul className="cart-list">
           {items.map((item) => (
-            <li key={item.id} className="cart-item">
+            <li key={item.id + item.size} className="cart-item">
               <img
                 src={item.imgSrc}
                 alt={item.title}
@@ -44,17 +44,15 @@ const Cart = () => {
               <div className="cart-item-details">
                 <span className="cart-item-title">{item.title}</span>
                 <span className="cart-item-size">({item.size})</span>
-                <span className="cart-item-price">
-                  {item.price}$ {/* Ціна одинична */}
-                </span>
-                <span className="cart-item-quantity"> x {item.quantity}</span>
+                <span className="cart-item-price"> {item.price}$</span>
+                <span className="cart-item-quantity"> x {item.quantity} </span>
                 <span className="cart-item-total">
                   {parseFloat(item.price * item.quantity).toFixed(2)}$
                 </span>
               </div>
               <Button
                 type="outline"
-                onClick={() => handleRemove(item.id)}
+                onClick={() => handleRemove(item.id, item.size)}
                 color="remove"
               >
                 Remove
@@ -70,9 +68,15 @@ const Cart = () => {
             <span>Total Price: </span>
             <span className="total-price-amount">${totalPrice.toFixed(2)}</span>
           </div>
-          <Button type="outline" onClick={handleClearCart} color="clear">
-            Clear Cart
-          </Button>
+          <div className="comp">
+            <Button type="outline" onClick={handleClearCart} color="clear">
+              Clear Cart
+            </Button>
+
+            <Button type="solid" onClick={handleProceedToCheckout}>
+              Proceed to Checkout
+            </Button>
+          </div>
         </div>
       )}
     </section>
