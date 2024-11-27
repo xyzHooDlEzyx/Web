@@ -20,9 +20,9 @@ export const addToCart = (item, quantity) => (dispatch, getState) => {
   }
 };
 
-export const removeFromCart = (id) => ({
+export const removeFromCart = (id, size) => ({
   type: "REMOVE_FROM_CART",
-  payload: id,
+  payload: { id, size },
 });
 
 export const clearCart = () => ({
