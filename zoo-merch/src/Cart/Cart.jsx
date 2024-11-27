@@ -8,14 +8,8 @@ const Cart = () => {
   const dispatch = useDispatch();
   const { items } = useSelector((state) => state.cart);
 
-  const checkIfItemExists = (item, selectedSize) => {
-    return items.find(
-      (cartItem) => cartItem.id === item.id && cartItem.size === selectedSize
-    );
-  };
-
-  const handleRemove = (id) => {
-    dispatch(removeFromCart(id));
+  const handleRemove = (id, size) => {
+    dispatch(removeFromCart(id, size));
   };
 
   const handleClearCart = () => {
@@ -23,7 +17,7 @@ const Cart = () => {
   };
 
   const totalPrice = items.reduce(
-    (total, item) => total + item.price * item.quantity, // Обчислюємо суму для кожного товару
+    (total, item) => total + item.price * item.quantity,
     0
   );
 
@@ -35,7 +29,7 @@ const Cart = () => {
       ) : (
         <ul className="cart-list">
           {items.map((item) => (
-            <li key={item.id} className="cart-item">
+            <li key={item.id + item.size} className="cart-item">
               <img
                 src={item.imgSrc}
                 alt={item.title}
@@ -44,17 +38,15 @@ const Cart = () => {
               <div className="cart-item-details">
                 <span className="cart-item-title">{item.title}</span>
                 <span className="cart-item-size">({item.size})</span>
-                <span className="cart-item-price">
-                  {item.price}$ {/* Ціна одинична */}
-                </span>
-                <span className="cart-item-quantity"> x {item.quantity}</span>
+                <span className="cart-item-price"> {item.price}$</span>
+                <span className="cart-item-quantity"> x {item.quantity} </span>
                 <span className="cart-item-total">
                   {parseFloat(item.price * item.quantity).toFixed(2)}$
                 </span>
               </div>
               <Button
                 type="outline"
-                onClick={() => handleRemove(item.id)}
+                onClick={() => handleRemove(item.id, item.size)}
                 color="remove"
               >
                 Remove
