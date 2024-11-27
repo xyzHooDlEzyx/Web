@@ -1,26 +1,23 @@
 import React from "react";
+import classNames from "classnames";
 import "./button.css";
 
 export default function Button({
   children,
   type = "solid",
   Big = false,
+  color,
   ...props
 }) {
-  let style;
-  switch (type) {
-    case "solid":
-      style = `button button-solid ${Big && "button-big"}`;
-      break;
-    case "outline":
-      style = `button button-outline ${Big && "button-big"}`;
-      break;
-    case "outline-src":
-      style = `button button-outline ${Big && "button-big"}`;
-      break;
-  }
+  const buttonClass = classNames("button", {
+    "button-solid": type === "solid",
+    "button-outline": type === "outline" || type === "outline-src",
+    "button-big": Big,
+    [color]: color,
+  });
+
   return (
-    <button className={style} {...props}>
+    <button className={buttonClass} {...props}>
       {children}
     </button>
   );

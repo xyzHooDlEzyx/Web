@@ -1,40 +1,35 @@
-import "./catalog.css";
 import React, { useEffect, useState } from "react";
-import { fetchProducts } from "../../api/productsApi";
+import { useDispatch, useSelector } from "react-redux";
+import { loadProducts } from "../store/actions/productActions";
 import Card from "../card/card";
 import Loading from "../Loading/loading";
 import Searchbar from "../Searchbar/searchbar";
+import "./catalog.css";
 
 const Catalog = () => {
-  const [products, setProducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const dispatch = useDispatch();
+  const { products, isLoading, error } = useSelector((state) => state.products);
+  const [isTimeoutLoading, setIsTimeoutLoading] = useState(true);
 
   useEffect(() => {
-    const loadProducts = async () => {
-      try {
-        const data = await fetchProducts();
-        setTimeout(() => {
-          setProducts(data);
-          setIsLoading(false);
-        }, 2000);
-      } catch (error) {
-        console.error("Error loading products:", error);
-        setIsLoading(false);
-      }
-    };
+    dispatch(loadProducts());
 
-    loadProducts();
-  }, []);
+    const timeout = setTimeout(() => {
+      setIsTimeoutLoading(false);
+    }, 2000);
 
-  const handleProductsUpdate = (updatedProducts) => {
-    setProducts(updatedProducts);
-  };
+    return () => clearTimeout(timeout);
+  }, [dispatch]);
 
-  if (isLoading) return <Loading />;
+  if (isLoading || isTimeoutLoading) {
+    return <Loading />;
+  }
+
+  if (error) return <div>Error: {error}</div>;
 
   return (
     <div className="catalog-page">
-      <Searchbar onProductsUpdate={handleProductsUpdate} />
+      <Searchbar />
       <div className="content-row text-center">
         {products.map((product) => (
           <div className="card-container" key={product.id}>

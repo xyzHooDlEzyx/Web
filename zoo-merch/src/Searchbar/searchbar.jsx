@@ -1,42 +1,33 @@
-import React, { useState, useEffect } from "react";
-import { fetchProducts } from "../../api/productsApi";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { loadProducts } from "../store/actions/productActions";
 import Filter from "../Filter/filter";
 import "./searchbar.css";
 
-const Searchbar = ({ onProductsUpdate }) => {
+const Searchbar = () => {
+  const dispatch = useDispatch();
+
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOption, setSortOption] = useState("");
   const [filterOption, setFilterOption] = useState("");
 
-  const fetchFilteredProducts = async () => {
-    try {
-      const products = await fetchProducts(
-        searchQuery,
-        sortOption,
-        filterOption
-      );
-      onProductsUpdate(products);
-    } catch (error) {
-      console.error("Error fetching filtered products:", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchFilteredProducts();
-  }, [searchQuery, sortOption, filterOption]);
-
   const handleSearchInput = (e) => {
     if (e.key === "Enter") {
       setSearchQuery(e.target.value);
+      dispatch(loadProducts(searchQuery, sortOption, filterOption));
     }
   };
 
   const handleSortChange = (e) => {
-    setSortOption(e.target.value);
+    const value = e.target.value;
+    setSortOption(value);
+    dispatch(loadProducts(searchQuery, value, filterOption));
   };
 
   const handleFilterChange = (e) => {
-    setFilterOption(e.target.value);
+    const value = e.target.value;
+    setFilterOption(value);
+    dispatch(loadProducts(searchQuery, sortOption, value));
   };
 
   return (
@@ -60,6 +51,7 @@ const Searchbar = ({ onProductsUpdate }) => {
           className="search-input"
           placeholder="Search products..."
           onKeyDown={handleSearchInput}
+          onChange={(e) => setSearchQuery(e.target.value)}
         />
         <img src="/searchbar.svg" className="search-icon" alt="search-icon" />
       </div>

@@ -1,34 +1,35 @@
-import React, { useState, useEffect } from "react";
-import { fetchProducts } from "../../api/productsApi";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { loadProducts } from "../store/actions/productActions";
 import Card from "../card/card";
 import Button from "../button/button";
 import Loading from "../Loading/loading";
 import "./home.css";
 
 const Home = () => {
-  const [products, setProducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-
+  const dispatch = useDispatch();
+  const { products, isLoading, error } = useSelector((state) => state.products);
   const [visibleProducts, setVisibleProducts] = useState(3);
+  const [isTimeoutLoading, setIsTimeoutLoading] = useState(true);
 
   useEffect(() => {
-    const loadProducts = async () => {
-      try {
-        const data = await fetchProducts();
-        setTimeout(() => {
-          setProducts(data);
-          setIsLoading(false);
-        }, 2000);
-      } catch (error) {
-        console.error("Error loading products:", error);
-        setIsLoading(false);
-      }
-    };
+    dispatch(loadProducts());
 
-    loadProducts();
-  }, []);
+    // Таймаут для імітації затримки завантаження
+    const timeout = setTimeout(() => {
+      setIsTimeoutLoading(false);
+    }, 2000);
 
-  if (isLoading) return <Loading />;
+    return () => clearTimeout(timeout); // Очищення таймауту при демонтажі
+  }, [dispatch]);
+
+  if (isLoading || isTimeoutLoading) {
+    return <Loading />;
+  }
+
+  if (error) {
+    return <div className="error-message">{error}</div>;
+  }
 
   const loadMoreItems = () => setVisibleProducts((prev) => prev + 3);
 

@@ -98,3 +98,43 @@ h2 {
   color: #333;
   margin: 1rem 0;
 }
+
+input[type="number"] {
+  width: 80px;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 1rem 0;
+  text-align: center;
+  background-color: #f9f9f9;
+  transition: all 0.3s ease;
+}
+
+input[type="number"]:focus {
+  border-color: #007bff;
+  background-color: #f0f8ff;
+  outline: none;
+}
+
+input[type="number"]:disabled {
+  background-color: #e9ecef;
+  cursor: not-allowed;
+}
+
+.quant_size {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+select {
+  padding: 0.5rem;
+  height: 41.33px;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  width: 100%;
+  max-width: 200px;
+}
