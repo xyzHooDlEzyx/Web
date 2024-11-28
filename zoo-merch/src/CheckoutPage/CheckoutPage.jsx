@@ -47,6 +47,10 @@ const CheckoutPage = () => {
       .max(50, "Last Name cannot be longer than 50 characters"),
     email: Yup.string()
       .email("Invalid email address")
+      .matches(
+        /\.[a-zA-Z]{2,}$/,
+        "Email must end with a period followed by at least two characters"
+      )
       .required("Email is required"),
     phoneNumber: Yup.string()
       .matches(
