@@ -34,6 +34,7 @@ const CheckoutPage = () => {
       return;
     }
     dispatch(clearCart());
+    localStorage.removeItem("cart");
     navigate("/success");
   };
 
