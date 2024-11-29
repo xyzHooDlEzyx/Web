@@ -1,6 +1,10 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { removeFromCart, clearCart } from "../store/actions/cartActions";
+import {
+  removeFromCart,
+  clearCart,
+  updateItemQuantity,
+} from "../store/actions/cartActions";
 import { useNavigate } from "react-router-dom";
 import Button from "../button/button";
 import "./cart.css";
@@ -12,6 +16,18 @@ const Cart = () => {
 
   const handleRemove = (id, size) => {
     dispatch(removeFromCart(id, size));
+  };
+
+  const handleIncrement = (id, size, quantity) => {
+    dispatch(updateItemQuantity(id, size, quantity + 1));
+  };
+
+  const handleDecrement = (id, size, quantity) => {
+    if (quantity > 1) {
+      dispatch(updateItemQuantity(id, size, quantity - 1));
+    } else {
+      handleRemove(id, size);
+    }
   };
 
   const handleClearCart = () => {
@@ -45,7 +61,29 @@ const Cart = () => {
                 <span className="cart-item-title">{item.title}</span>
                 <span className="cart-item-size">({item.size})</span>
                 <span className="cart-item-price"> {item.price}$</span>
-                <span className="cart-item-quantity"> x {item.quantity} </span>
+
+                <div className="cart-item-quantity">
+                  <Button
+                    type="outline"
+                    onClick={() =>
+                      handleDecrement(item.id, item.size, item.quantity)
+                    }
+                    color="decrement"
+                  >
+                    -
+                  </Button>
+                  <span> {item.quantity} </span>
+                  <Button
+                    type="outline"
+                    onClick={() =>
+                      handleIncrement(item.id, item.size, item.quantity)
+                    }
+                    color="increment"
+                  >
+                    +
+                  </Button>
+                </div>
+
                 <span className="cart-item-total">
                   {parseFloat(item.price * item.quantity).toFixed(2)}$
                 </span>
