@@ -28,3 +28,17 @@ export const removeFromCart = (id, size) => ({
 export const clearCart = () => ({
   type: "CLEAR_CART",
 });
+
+export const updateItemQuantity =
+  (id, size, quantity) => (dispatch, getState) => {
+    const existingItem = getState().cart.items.find(
+      (cartItem) => cartItem.id === id && cartItem.size === size
+    );
+
+    if (existingItem) {
+      dispatch({
+        type: "UPDATE_ITEM_QUANTITY",
+        payload: { id, size, quantity },
+      });
+    }
+  };

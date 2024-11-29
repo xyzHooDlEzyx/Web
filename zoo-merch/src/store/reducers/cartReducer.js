@@ -32,6 +32,15 @@ const cartReducer = (state = initialState, action) => {
       localStorage.removeItem("cart");
       return { ...state, items: [] };
 
+    case "UPDATE_ITEM_QUANTITY":
+      updatedItems = state.items.map((item) =>
+        item.id === action.payload.id && item.size === action.payload.size
+          ? { ...item, quantity: action.payload.quantity }
+          : item
+      );
+      localStorage.setItem("cart", JSON.stringify(updatedItems)); // Save to localStorage
+      return { ...state, items: updatedItems };
+
     default:
       return state;
   }
