@@ -38,7 +38,7 @@ const cartReducer = (state = initialState, action) => {
           ? { ...item, quantity: action.payload.quantity }
           : item
       );
-      localStorage.setItem("cart", JSON.stringify(updatedItems)); // Save to localStorage
+      localStorage.setItem("cart", JSON.stringify(updatedItems));
       return { ...state, items: updatedItems };
 
     default:
