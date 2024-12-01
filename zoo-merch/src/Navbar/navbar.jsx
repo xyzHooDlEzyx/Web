@@ -1,11 +1,16 @@
 import { useEffect, useRef, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { signOut } from "../../api/productsApi";
+import Button from "../button/button";
 import "./navbar.css";
 
 const Navbar = () => {
   const [sliderStyle, setSliderStyle] = useState({ width: 0, left: 0 });
   const navRef = useRef(null);
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const userId = localStorage.getItem("id");
 
   useEffect(() => {
     const li = navRef.current.querySelectorAll(".nav ul li");
@@ -41,6 +46,11 @@ const Navbar = () => {
     }
   }, [location]);
 
+  const handleSignOut = () => {
+    signOut();
+    navigate("/login");
+  };
+
   return (
     <header>
       <nav
@@ -73,6 +83,13 @@ const Navbar = () => {
               ></span>
             </ul>
           </div>
+          <Button
+            className="signout-btn"
+            type="outline"
+            onClick={handleSignOut}
+          >
+            SignOut
+          </Button>
         </div>
       </nav>
     </header>

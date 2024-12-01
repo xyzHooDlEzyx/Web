@@ -33,3 +33,35 @@ export const createProduct = async (product) => {
     throw error;
   }
 };
+
+export const loginUser = async (email, password) => {
+  try {
+    const response = await axios.post("http://localhost:8080/login", {
+      email,
+      password,
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error logging in:", error);
+    throw error;
+  }
+};
+
+export const registerUser = async (email, password, firstName, lastName) => {
+  try {
+    const response = await axios.post("http://localhost:8080/register", {
+      email,
+      password,
+      firstName,
+      lastName,
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error registering user:", error);
+    throw error;
+  }
+};
+
+export const signOut = () => {
+  localStorage.removeItem("userId");
+};

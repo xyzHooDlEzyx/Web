@@ -15,7 +15,6 @@ nav {
 }
 
 .slider-container {
-  transform: translateX(-60px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -81,4 +80,16 @@ nav ul li a:active {
   background-color: #df4d60e1;
   z-index: 1;
   transition: all width 0.3s ease, left 0.3s ease;
+}
+
+.signout-btn {
+  width: 110px;
+  background-color: #a33e4c;
+  color: #fff;
+}
+
+.signout-btn:hover,
+.signout-btn:active {
+  background-color: #6a2831;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
 }
