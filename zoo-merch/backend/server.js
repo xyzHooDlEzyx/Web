@@ -1,11 +1,28 @@
 import express from "express";
 import cors from "cors";
+import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import { getProduct, buildProductQuery, pool } from "../backend/database.js";
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+const authenticateJWT = (req, res, next) => {
+  const token = req.headers["authorization"]?.split(" ")[1];
+
+  if (!token) {
+    return res.status(403).json({ message: "No token provided" });
+  }
+  try {
+    const decoded = jwt.verify(token, "your_secret_key");
+    req.user = decoded;
+  } catch (err) {
+    return res.status(401).json({ message: "Invalid or expired token" });
+  }
+
+  next();
+};
 
 app.post("/register", async (req, res) => {
   const { email, password, firstName, lastName } = req.body;
@@ -57,10 +74,22 @@ app.post("/login", async (req, res) => {
     return res.status(400).json({ message: "Invalid email or password" });
   }
 
-  res.json({ message: "Login successful", userId: user[0].id });
+  const token = jwt.sign(
+    { email: user.email, userId: user[0].id },
+    "your_secret_key",
+    {
+      expiresIn: "1h",
+    }
+  );
+
+  res.json({
+    message: "Login successful",
+    userId: user[0].id,
+    token,
+  });
 });
 
-app.get("/products", async (req, res, next) => {
+app.get("/products", authenticateJWT, async (req, res, next) => {
   try {
     const { search = "", sort = "", filter = "" } = req.query;
 
@@ -77,7 +106,7 @@ app.get("/products", async (req, res, next) => {
   }
 });
 
-app.get("/products/:id", async (req, res, next) => {
+app.get("/products/:id", authenticateJWT, async (req, res, next) => {
   try {
     const id = req.params.id;
     const product = await getProduct(id);

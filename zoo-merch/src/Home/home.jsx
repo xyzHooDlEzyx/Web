@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadProducts } from "../store/actions/productActions";
-import Card from "../card/card";
+import Card from "../Card/card";
 import Button from "../button/button";
 import Loading from "../Loading/loading";
 import "./home.css";
@@ -15,12 +15,11 @@ const Home = () => {
   useEffect(() => {
     dispatch(loadProducts());
 
-    // Таймаут для імітації затримки завантаження
     const timeout = setTimeout(() => {
       setIsTimeoutLoading(false);
     }, 2000);
 
-    return () => clearTimeout(timeout); // Очищення таймауту при демонтажі
+    return () => clearTimeout(timeout);
   }, [dispatch]);
 
   if (isLoading || isTimeoutLoading) {

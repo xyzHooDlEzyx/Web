@@ -22,11 +22,12 @@ const LoginPage = () => {
   const handleLogin = async (values) => {
     try {
       const response = await loginUser(values.email, values.password);
-      // token,
-      const { userId } = response;
-      // localStorage.setItem("token", token);
+
+      const { token, userId } = response;
+      localStorage.setItem("token", token);
       localStorage.setItem("userId", userId);
       navigate("/");
+      window.location.reload();
     } catch (error) {
       setErrorMessage(error.message);
     }

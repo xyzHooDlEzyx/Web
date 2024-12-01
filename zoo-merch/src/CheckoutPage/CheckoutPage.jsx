@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { jwtDecode } from "jwt-decode";
 import Button from "../button/button";
 import { clearCart } from "../store/actions/cartActions";
 import { useDispatch } from "react-redux";
@@ -29,12 +30,20 @@ const CheckoutPage = () => {
     return true;
   };
 
+  const getUserIdFromToken = () => {
+    const token = localStorage.getItem("token");
+    if (!token) return null;
+    const decoded = jwtDecode(token);
+    return decoded.userId;
+  };
+
   const handleSubmit = (values) => {
+    const userId = getUserIdFromToken();
     if (!checkPhoneAndEmail(values.phoneNumber, values.email)) {
       return;
     }
-    dispatch(clearCart());
-    localStorage.removeItem("cart");
+    dispatch(clearCart(userId));
+    localStorage.removeItem(`cart_${userId}`);
     navigate("/success");
   };
 

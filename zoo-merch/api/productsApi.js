@@ -1,10 +1,14 @@
 import axios from "axios";
 
+const token = localStorage.getItem("token");
 const API_URL = "http://localhost:8080/products";
 
 export const fetchProducts = async (search = "", sort = "", filter = "") => {
   try {
     const response = await axios.get(API_URL, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
       params: { search, sort, filter },
     });
     return response.data;
@@ -16,7 +20,11 @@ export const fetchProducts = async (search = "", sort = "", filter = "") => {
 
 export const fetchProductById = async (id) => {
   try {
-    const response = await axios.get(`${API_URL}/${id}`);
+    const response = await axios.get(`${API_URL}/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     return response.data;
   } catch (error) {
     console.error(`Error fetching product with ID ${id}:`, error);
@@ -64,4 +72,5 @@ export const registerUser = async (email, password, firstName, lastName) => {
 
 export const signOut = () => {
   localStorage.removeItem("userId");
+  localStorage.removeItem("token");
 };

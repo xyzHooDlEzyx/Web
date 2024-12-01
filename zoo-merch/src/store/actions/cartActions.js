@@ -1,5 +1,16 @@
+import { jwtDecode } from "jwt-decode";
+
+export const getUserIdFromToken = () => {
+  const token = localStorage.getItem("token");
+  if (!token) return null;
+  const decoded = jwtDecode(token);
+  return decoded.userId;
+};
+
 export const addToCart = (item, quantity) => (dispatch, getState) => {
-  const userId = localStorage.getItem("userId");
+  const userId = getUserIdFromToken();
+  if (!userId) return;
+
   const existingItem = getState().cart.items.find(
     (cartItem) => cartItem.id === item.id && cartItem.size === item.size
   );

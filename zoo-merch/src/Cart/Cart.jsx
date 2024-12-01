@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   removeFromCart,
@@ -13,6 +13,16 @@ const Cart = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { items } = useSelector((state) => state.cart);
+
+  useEffect(() => {
+    const reload = () => {
+      window.location.reload();
+    };
+
+    return () => {
+      reload;
+    };
+  }, []);
 
   const handleRemove = (id, size) => {
     dispatch(removeFromCart(id, size));

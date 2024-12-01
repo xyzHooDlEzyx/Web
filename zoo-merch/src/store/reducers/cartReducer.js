@@ -1,13 +1,14 @@
+import { getUserIdFromToken } from "../actions/cartActions";
+
 const initialState = {
-  items:
-    JSON.parse(
-      localStorage.getItem(`cart_${localStorage.getItem("userId")}`)
-    ) || [],
+  items: JSON.parse(localStorage.getItem(`cart_${getUserIdFromToken()}`)) || [],
 };
 
 const cartReducer = (state = initialState, action) => {
   let updatedItems;
-  const userId = localStorage.getItem("userId");
+  const userId = getUserIdFromToken();
+
+  if (!userId) return state;
 
   switch (action.type) {
     case "ADD_TO_CART":
