@@ -1,0 +1,84 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Rubik", system-ui;
+  width: 100%;
+  display: flex;
+}
+
+nav {
+  display: flex;
+}
+
+.slider-container {
+  transform: translateX(-60px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.logo {
+  width: 2rem;
+  transform: rotate(30deg);
+}
+
+nav ul {
+  padding-left: 0;
+  display: flex;
+  background-color: #14171a;
+  border-radius: 30px;
+  position: relative;
+  margin-bottom: 0;
+}
+
+nav ul li {
+  list-style: none;
+  text-align: center;
+  z-index: 2;
+}
+
+nav ul li a {
+  font-size: 1.25rem;
+  text-decoration: none;
+  color: #fff;
+  padding: 15px 0;
+  display: block;
+}
+
+nav ul li a:hover,
+nav ul li a:focus,
+nav ul li a:active {
+  color: #fff;
+}
+
+.home {
+  width: 120px;
+}
+
+.catalog {
+  width: 180px;
+}
+
+.cart {
+  width: 120px;
+}
+
+.navbar-brand {
+  margin-right: 0;
+}
+
+.slider {
+  position: absolute;
+  height: 100%;
+  left: 0;
+  width: 100px;
+  border-radius: 30px;
+  background-color: #df4d60e1;
+  z-index: 1;
+  transition: all width 0.3s ease, left 0.3s ease;
+}

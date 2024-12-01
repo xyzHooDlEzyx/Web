@@ -1,0 +1,149 @@
+.cart-page {
+  min-height: 77.95vh;
+  padding: 2rem;
+  background-color: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cart-page h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.comp {
+  width: 28.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart-page .empty-cart-message {
+  font-size: 1.2rem;
+  color: #666;
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.cart-list {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  max-width: 800px;
+  margin-top: 1.5rem;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cart-item-image {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.cart-item-details {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 1rem;
+}
+
+.decrement,
+.increment {
+  margin-left: 0 !important;
+}
+
+.cart-item-title {
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.cart-item-price {
+  font-size: 1rem;
+  color: #666;
+}
+
+.cart-item-quantity {
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+}
+
+.cart-item-quantity button {
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.cart-item-quantity span {
+  margin: 0 1rem;
+  font-size: 1.2rem;
+}
+
+.cart-item-total {
+  font-size: 1.1rem;
+  margin-left: 0.4rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.cart-item button {
+  margin-left: 1rem;
+}
+
+.cart-summary {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 100%;
+  max-width: 800px;
+}
+
+.total-price {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.total-price-amount {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #212529;
+}
+
+button {
+  padding: 0.7rem 1.5rem;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+button:disabled {
+  background-color: #d6d6d6;
+  cursor: not-allowed;
+}
