@@ -7,14 +7,6 @@ export const getUserIdFromToken = () => {
   return decoded.userId;
 };
 
-export const getTokenPayload = () => {
-  const token = localStorage.getItem("token");
-  if (!token) return null;
-
-  const encodedPayload = token.split(".")[1];
-  return encodedPayload;
-};
-
 export const addToCart = (item, quantity) => (dispatch, getState) => {
   const userId = getUserIdFromToken();
   if (!userId) return;
