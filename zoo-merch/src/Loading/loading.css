@@ -1,0 +1,29 @@
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Висота на весь екран */
+  background-color: #f9f9f9; /* Світлий фон */
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 6px solid rgba(0, 0, 0, 0.1); /* Напівпрозоре кільце */
+  border-top: 6px solid #3498db; /* Акцент на верхньому секторі */
+  border-radius: 50%;
+  animation: spin 1s linear infinite; /* Анімація */
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg); /* Обертання */
+  }
+}
+
+.loading-container p {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #555;
+}

@@ -1,0 +1,64 @@
+.button {
+  all: unset;
+  text-align: center;
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
+  font-size: 1.6rem;
+  font-weight: 400;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.button-solid {
+  background-color: #212529;
+  color: #fff;
+}
+
+.button-solid:hover,
+.button-solid:active {
+  background-color: #424649;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+}
+
+.button-outline {
+  border: 1px solid #212529;
+  color: #212529;
+}
+
+.button-outline.remove {
+  border: 1px solid #df5347;
+  color: #df5347;
+}
+
+.button-outline:hover,
+.button-outline:active {
+  border: 1px solid transparent;
+  background-color: #424649;
+  color: #fff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+}
+
+.button-outline:hover.remove,
+.button-outline:active.remove {
+  border: 1px solid transparent;
+  background-color: #df5347;
+  color: #fff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+}
+
+.button-big {
+  width: 60%;
+}
+
+.button-outline-src {
+  border: 1px solid #212529;
+  color: #212529;
+}
+
+.button-outline-src:hover,
+.button-outline-src:active {
+  border: 1px solid transparent;
+  background-color: #424649;
+  color: #fff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+}
